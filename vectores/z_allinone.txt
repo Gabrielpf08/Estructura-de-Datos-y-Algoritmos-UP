@@ -1,0 +1,649 @@
+/* Ejemplo de vectores en C*/
+
+#include <stdio.h> 
+
+void cargar (int arr[])
+{
+    int i; 
+    for (i = 0, i < 10, i ++)
+    {
+        printf("\nIngrese un valor: ");
+        scanf("%d", &arr[i]); // el arreglo toma el valor de "i"
+    }
+}
+
+void mostrar(int vec[])
+{
+    int i;
+    for (i = 0, i < 10, i ++)
+    {
+        printf("\nEl valor %d pertenece a la posicion %d", vec[i], i); // vec[i] es el la posicion en el arreglo que ocupa "i", 
+                                                                       // e "i" es el numero en sí
+    }
+}
+
+int main()
+{
+    int vec[10];
+    cargar(vec);
+    mostrar(vec);
+
+    return 0;
+}
+
+
+/* Ejercicio de vectores para evaluar conocimientos*/
+
+// Ingresar las edades de un curso y mostrar las mayores al promedio 
+
+#include <stdio.h> 
+
+void cargar (int arr[])
+{
+    int i; 
+    for (i = 0, i < 10, i ++)
+    {
+        printf("\nIngrese un valor: ");
+        scanf("%d", &arr[i]); // el arreglo toma el valor de "i"
+    }
+}
+
+void mostrar(int vec[])
+{
+    int i;
+    for (i = 0, i < 10, i ++)
+    {
+        printf("\nEl valor %d pertenece a la posicion %d", vec[i], i); // vec[i] es el la posicion en el arreglo que ocupa "i", 
+                                                                       // e "i" es el numero en sí
+    }
+}
+
+float promedioEdades(vec[]) // es float porque me va a devolver numeros con coma ya que quiero sacar un promedio
+{
+    int suma = 0, cont; // aca se pone numero sin coma porque solo estoy sumando, y prefiero sumar numeros sin coma
+    // se recomienda que las variables ("suma" en este caso) se inicializen en 0 para que el C no le asigne una por sí mismo que puede quedar como un valor fijo sin querer
+
+    for (cont = 0; cont < 10; cont ++) 
+    {
+        suma += vec[cont]; 
+    }
+
+    return suma/10; // con esto saco el promedio de una y no lo tengo que hacer en otra funcion
+}
+
+void mostrarMayores(int vec[], float promedio)
+{
+    int i;
+    for (i = 0, i < 10, i ++)
+    {
+        if (vec[i] > promedio)
+        {
+            printf("\nEl valor %d pertenece a la posicion %d", vec[i], i);
+        }
+    }
+}
+
+int main()
+{
+    int vec[10];
+    float promedio; 
+    cargar(vec);
+    //mostrar(vec); lo comento solo para que no se muestren tantos numeros
+    promedio = promedioEdades(vec);
+    printf("%f", promedio);
+    mostrarMayores(vec, promedio);
+
+    return 0;
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/*ARREGLOS*/
+
+
+
+/*Esto es un ejemplo de como usar los arreglos (los cuales vendrian a ser los 'def' en Python)*/
+
+#include <stdio.h>
+
+void cargar(int a[], int n) // se usan dos int porque hay que declarar cada uno de los datos ingresados
+// se utiliza 'void' como el 'def'. Tambien se pueden usar otros pero no sirven para este ejemplo
+{
+    int i; 
+    for (i = 0; i < n; i++)
+    {
+        printf("Ingrese un numero: ");
+        scanf("%d", &a[i]);
+    }
+}    
+
+void mostrar(int a[], int n)
+{
+    int i;
+    for (i = 0; i < n; i++)
+    {
+        printf("\nEl valor es: %d",a[i]);
+    }
+}
+
+int main()
+{
+    int vec[30], dim; // el 'dim' es para que el usuario ingrese la cantidad de elementos que va a ingresar en el arreglo
+    // y el 'vec' es para la cantidad de lugares que guardo por las dudas de que quieran ingresarse esa suma de numeros, 
+    // aunque no es necesario que se ingresen 30 si o si, es solo el maximo de numeros que le permito ingresar.
+    
+    printf("Ingrese la dimension: ");
+    scanf("%d", &dim);
+    cargar(vec, dim);
+    mostrar(vec,dim);
+    
+    return 0;
+}
+
+
+
+
+
+/* Esto es otro ejemplo de los arreglos */
+
+#include <stdio.h> 
+
+int cargar (int vec[])
+{
+    int i, num, j = 0;
+    for (i = 0; i < 10; i++) // aca pongo 10 porque son solo 10 los que quiero cargar
+    {
+        scanf("%d", &num);
+        if (num%2 == 0)
+        {
+            vec[j] = num; // le pongo 'j = 0' para que el primer numero que se ingresa quede en la primera posicion del arreglo 
+            j++;
+        }
+    }
+    return j; // devolvemos 'j' ya que es la dimension
+}
+
+void mostrar (int vec[], int dim)
+{
+    int i;
+    for (i = 0; i < dim; i++) // ahora quiero que el valor de 'i' sea comparado con la dimension que le pase, por eso saque el10 que iba antes
+    {
+        printf("%d", vec[i]);
+    }
+    
+}
+
+
+
+int main()
+{
+    int vec[20], dim;
+    dim = cargar(vec);
+    printf("\nLa dimension del arreglo es %d");
+    mostrar(vec, dim); 
+    
+    return 0;
+}
+
+
+
+/* Aca vemos un ejemplo de como podemos hacer operaciones sin funciones, en este caso, ordenar un arreglo de menor a mayor */
+
+#include <stdio.h> 
+
+int cargar (int vec[])
+{
+    int i, num, j = 0;
+    for (i = 0; i < 10; i++) // aca pongo 10 porque son solo 10 los que quiero cargar
+    {
+        scanf("%d", &num);
+        if (num%2 == 0)
+        {
+            vec[j] = num; // le pongo 'j = 0' para que el primer numero que se ingresa quede en la primera posicion del arreglo 
+            j++;
+        }
+    }
+    return j; // devolvemos 'j' ya que es la dimension
+}
+
+
+void ordenar(int vec[], int dim)
+{
+    int i, j, aux;
+    for (i = 0; i < dim; i++)
+    {
+        for (j = i + 1; j < dim; j++)
+        {
+            if (vec[i] < vec[j]) // aca lo estoy ordenando de mayor a menor, en caso de querer hacerlo al revez cambio el '<' por '>'.
+            {
+                aux = vec[i];
+                vec[i] = vec[j];
+                vec[j] = aux;
+            }   
+        }
+    }
+}
+
+
+
+void mostrar (int vec[], int dim)
+{
+    int i;
+    for (i = 0; i < dim; i++) // ahora quiero que el valor de 'i' sea comparado con la dimension que le pase, por eso saque el10 que iba antes
+    {
+        printf("\n%d", vec[i]);
+    }
+    
+}
+
+
+ 
+int main()
+{
+    int vec[20], dim;
+    dim = cargar(vec);
+    printf("\nLa dimension del arreglo es %d", dim);
+    mostrar(vec, dim); 
+    ordenar(vec, dim);
+    mostrar(vec, dim); // lo pongo de vuelta al mostrar para ver como me lo ordeno la variable 'ordenar'
+    
+    return 0;
+}
+
+
+
+/*Este me devuelve todos los numeros del arreglo con posicion y todo*/
+
+#include <stdio.h>
+
+void cargar (int a[],int dim)
+{
+    int i;
+    
+    for (i=0;i<dim;i++)
+    {
+        printf("\nIngrese los valor: ");
+        scanf("%d",&a[i]);
+    }
+    
+    return;
+}
+
+
+void mostrar (int a[],int dim)
+{
+    int i;
+    
+    for (i=0;i<dim;i++)
+    {
+        printf("\n %d %d",i, a[i]);
+    }
+    
+    return;
+}
+
+
+int main()
+{
+    int vec[40],dim;
+    
+    printf("ingrese cantidad de valores del arreglo: ");
+    scanf("%d",&dim);
+    cargar(vec,dim);
+    mostrar(vec,dim);
+    
+    return 0;
+}
+    
+
+
+/*Esto es un ejemplo de como devolver numeros pares en un arreglo, con posicion y todo*/
+
+#include <stdio.h>
+
+int cargar (int a[])
+{
+    int i=0, num;
+    printf("\nIngrese numeros y cortar en 0: ");
+    scanf("%d",&num);
+    
+    while (num > 0)
+    {
+        if (num%2==0)
+        {
+            a[i]=num;
+            i++;
+        }
+        printf("\nIngrese numeros y cortar en 0: ");
+        scanf("%d",&num);
+    }
+    
+    return i;
+    
+}
+
+void mostrar (int a[],int dim)
+{
+    int i;
+    for (i=0;i<dim;i++)
+    {
+        printf("\n %d %d",i, a[i]);
+    }
+    
+    //return;
+}
+
+int main()
+{
+    int vec[100], dim;
+    dim=cargar(vec);
+    mostrar(vec,dim);
+    
+    return 0;
+}
+
+
+
+/*Esto es un ejemplo de como agregar valores a un arreglo, mas especificamente a la mitad del arreglo, siempre y cuando estemos 
+hablando de valores pares (dado que esa es la condicion del ejemplo, no es porque siempre sea asi)*/
+
+/*Ingresar numeros hasta que se ingrese un cero y devolver los valores pares del arreglo*/
+
+#include <stdio.h>
+
+int cargar (int a[]) //el cargar lo hago de tipo "int" para que me devuelva los elementos pares del arreglo, como lo dice en la consigna
+{
+    int i=0, num;
+    
+    printf("\n ingrese valor: ");
+    scanf("%d",&num);
+    while (num > 0)
+    {
+        if (num%2==0)
+        {
+            a[i]=num;
+            i++;
+        }
+        
+        printf("\n ingrese valor: ");
+        scanf("%d",&num);
+    }
+    
+    return i; //retorno algo porque es una variable de tipo "int" 
+}
+
+void mostrar (int a[],int dim)
+{
+    int i;
+    for (i=0;i<dim;i++)
+    {
+        printf("\n %d %d",i, a[i]); //esto es para que se muestre la posicion en el arreglo y el valor en cada cajita
+    }
+    
+    return;
+}
+
+void insertar(int a[],int dim)
+{
+    int i;
+    for (i=dim; i>dim/2; i--) //se decrementa porque va desde el ultimo valor de la matriz hasta el primero
+    {
+        a[i]=a[i-1];
+    }
+    
+    a[dim/2]=0; //esto lo que va a hacer es insertar un 0 en la mitad del arreglo nuevo
+    
+    return;
+    
+}
+
+int main()
+{
+    int vec[100], dim;
+    dim=cargar(vec);
+    mostrar(vec,dim);
+    insertar(vec,dim);
+    printf("\n el arreglo con insercion es: ");
+    mostrar(vec,dim+1); //este mostrar es para el arreglo con la insercion, por eso es "dim+1", es el arreglo mas 1 lugar para 
+                        //agregar el numero
+    
+    return 0;
+}
+
+
+
+/*Esto es un ejemplo de como agregar valores a un arreglo*/
+
+/*Ingresar numeros hasta que se ingrese un cero y devolver los valores pares del arreglo*/
+
+#include <stdio.h>
+
+int cargar (int a[]) //el cargar lo hago de tipo "int" para que me devuelva los elementos pares del arreglo, como lo dice en la consigna
+{
+    int i=0, num;
+    
+    printf("\n ingrese valor: ");
+    scanf("%d",&num);
+    while (num > 0)
+    {
+        if (num%2==0)
+        {
+            a[i]=num;
+            i++;
+        }
+        
+        printf("\n ingrese valor: ");
+        scanf("%d",&num);
+    }
+    
+    return i; //retorno algo porque es una variable de tipo "int" 
+}
+
+void mostrar (int a[],int dim)
+{
+    int i;
+    for (i=0;i<dim;i++)
+    {
+        printf("\n %d %d",i, a[i]);
+    }
+    
+    return;
+}
+
+void insertar(int a[],int dim)
+{
+    int i;
+    for (i=dim; i>0; i--) //el "i>0" es para que inserte un numero al principio del arreglo
+    {
+        a[i]=a[i-1];
+    }
+    
+    //a[0]=1000; //esto era un ejemplo para mostrar que la posicion 0 tome el valor de 1000, pero si lo comento para que no lo tome, 
+                 //va a tomar el primer valor ingresado y lo va a repetir en la posicion 0 y 1, ya que tiene que ir si o si algo porque 
+                 //los estoy moviendo una posicion a todos los numeros
+    return;
+    
+}
+
+int main()
+{
+    int vec[100], dim;
+    dim=cargar(vec);
+    mostrar(vec,dim);
+    insertar(vec,dim);
+    printf("\n el arreglo con insercion es: ");
+    mostrar(vec,dim+1); //este mostrar es para el arreglo con la insercion, por eso es "dim+1", es el arreglo mas 1 lugar para agregar el numero
+    
+    return 0;
+}
+
+
+
+/*Ejemplo de arreglos ordenados de mayor a menor con la condicion de que sean pares*/
+
+#include <stdio.h>
+
+int cargar (int a[])
+{
+    int i=0,num;
+    printf("\n ingrese valor: ");
+    scanf("%d",&num);
+    while (num > 0)
+    {
+        if (num%2==0)
+        {
+            a[i]=num;
+            i++;
+        }
+        printf("\n ingrese valor: ");
+        scanf("%d",&num);
+    }
+    
+    return i;
+}
+
+
+void mostrar (int a[],int dim)
+{
+    int i;
+    for (i=0;i<dim;i++)
+    {
+        printf("\n %d %d",i, a[i]);
+    }
+    
+    return;
+}
+
+
+void insertar(int a[],int dim)
+{
+    int i;
+    for (i=dim; i>0;i--)
+    {
+        a[i]=a[i-1];
+    }
+    
+    a[0]=1000; //esto era un ejemplo para mostrar que la posicion 0 tome el valor de 1000, pero si lo comento para que no lo tome, 
+                //va a tomar el primer valor ingresado y lo va a repetir en la posicion 0 y 1, ya que tiene que ir si o si algo porque 
+                //los estoy moviendo una posicion a todos los numeros
+    return;
+}
+
+
+void ordenar(int a[],int dim)
+{
+    int i,j,aux;
+    for(i=0;i<dim;i++)
+    {
+        for(j=i+1;j<dim;j++)
+        {
+            if(a[i]<a[j]) // esto hace que se acomode de mayor a menor
+            {
+                aux=a[i];
+                a[i]=a[j];
+                a[j]=aux;
+            }
+        }
+    }
+    
+    return;
+}
+
+
+int main()
+{
+    int vec[100],dim;dim=cargar(vec);
+    mostrar(vec,dim);
+    insertar(vec,dim);
+    printf("\n el arreglo con insercion es: ");
+    mostrar(vec,dim+1);
+    ordenar(vec,dim+1);
+    printf("\n el arreglo ordenado: ");
+    mostrar(vec,dim+1);
+    
+    return 0;
+}
+        
+
+
+/*Ejemplo de arreglos ordenados de menor a mayor, siempre y cuando sean pares*/
+
+#include <stdio.h>
+
+int cargar (int a[])
+{
+    int i = 0, num;
+    printf("\n ingrese valor: ");
+    scanf("%d",&num);
+    while (num > 0)
+    {
+        if (num%2==0)
+        {
+            a[i]=num;
+            i++;
+        }
+        printf("\n ingrese valor: ");
+        scanf("%d",&num);
+    }
+    
+    return i;
+}
+
+
+void mostrar (int a[],int dim)
+{
+    int i;
+    for (i=0;i<dim;i++)
+    {
+        printf("\n %d %d",i, a[i]);
+    }
+    
+    return;
+}
+
+
+void insertar(int a[],int dim)
+{
+    int i;
+    for (i=dim; i>0;i--)
+    {
+        a[i]=a[i-1];
+    }
+    
+    a[0]=1000;
+    return;
+}
+
+
+void ordenar(int a[],int dim)
+{
+    int i,j,aux;
+    for(i=0;i<dim;i++)
+    {
+        for(j=i+1;j<dim;j++)
+        {
+            if(a[i]>a[j]) //esto hace que se acomode de menor a mayor
+            {
+                aux=a[i];
+                a[i]=a[j];
+                a[j]=aux;
+            }
+        }
+    }
+    
+    return;
+}
+
+
+int main()
+{
+    int vec[100],dim;dim=cargar(vec);
+    mostrar(vec,dim);
+    insertar(vec,dim);
+    printf("\n el arreglo con insercion es: ");
+    mostrar(vec,dim+1);
+    ordenar(vec,dim+1);
+    printf("\n el arreglo ordenado: ");
+    mostrar(vec,dim+1);
+    
+    return 0;
+}

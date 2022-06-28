@@ -1,0 +1,10 @@
+/*Crear una cola con la siguiente informacion.
+
+El ingreso de datos termina con -1.
+
+escribir una funcion que perimita calcular 
+
+el promedio de los numeros mayores al tercer elemento ingresado a la cola,
+si no hubiera algun numero mostrar una leyenda
+
+La sumatoria de los dos elementos minimos de la cola*/

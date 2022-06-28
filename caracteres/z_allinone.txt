@@ -1,0 +1,423 @@
+/*CARACTERES*/
+
+
+/* Aca vemos un ejemplo de caracteres, la consigna era contar cuantas palabras terminaban en "s"*/ 
+
+#include <stdio.h>
+
+int main() 
+{
+  int c, cont=0, aux;
+  printf("Ingrese la frase: ");
+  c=getchar();
+  while(c!='.')
+  {   
+    while(c!=' ' && c !='.')
+    {
+      aux=c; // como la "c" recorre todas las frases, dejo que el "aux" almacene la ultima letra de cada frase, que en este caso la condicion es que termine en "s"
+      c=getchar();
+    }
+
+    if(aux == 's') // se pone el "if" afuera del "while" porque (mirar la clase)
+    {
+        cont++;
+    }
+
+    while(c==' '&& c!='.') // esto se hace para cuando hay muchos espacios entre palabra y palabra, de esta manera no sale error
+    {
+      c=getchar();
+    }
+    
+   
+  }
+  printf("\nLa cantidad de palabras terminadas en S son: %d", cont);
+
+  return 0;
+}
+
+
+
+/*Este es otro ejemplo en el que cuento la cantidad de "s" que hay en total en las frases que ingrese*/
+
+#include <stdio.h>
+
+int main()
+{
+    int c, cont = 0;
+    
+    printf("\nIngrese la frase: ");
+    c = getchar(c);
+    while(c != '.')
+    {
+        if(c == 's')
+        {
+            cont++;
+        }
+        
+        c = getchar();
+    // putchar(c) // no esta mal pero por culpa del IDE me queda un bucle infinito 
+        
+    }
+    
+    printf("\nLas frases terminadas en S son: %d", cont);
+    
+    return 0; 
+}
+
+
+
+/* Aca en este ejemplo lo que se hace es contar las palabras que empiezan con "s"*/
+
+
+#include <stdio.h>
+
+int main() 
+{
+  int c, cont=0, aux;
+  printf("Ingrese la frase: ");
+  c=getchar();
+  while(c!='.')
+  {   
+    while(c!=' ' && c !='.')
+    {                           // con esta rutina salteo los blancos, por si el usuario empezo con espacios o puso mas de un espacio entre palabra y palabra
+      c=getchar();
+    }
+
+    aux=c; // si salteo los blancos (como hice arriba) me quedo con la primera letra de la palabra
+
+    while(c==' '&& c!='.') // esto se hace para cuando hay muchos espacios entre palabra y palabra, de esta manera no sale error
+    {
+      c=getchar();
+    }
+    
+
+    if(aux == 's') 
+    {
+        cont++;
+    }   
+  }
+
+  printf("\nLa cantidad de palabras terminadas en S son: %d", cont);
+
+  return 0;
+}
+
+
+/*Aca hacemos la cantidad de palabras que tiene la frase*/
+
+#include <stdio.h>
+
+int main()
+{
+    int c, cont = 0, cont1 = 0;
+    printf("\nIngrese la frase: ");
+    c = getchar();
+    while(c != '.')
+    {
+        while(c == ' ' && c != '.')
+        {
+            c = getchar();
+        }
+
+        cont = 0;
+        while(c != ' ' && c != '.') // aca lo que hace es  contar las letras hasta que llegue al blanco, donde pasa al "if"
+        {
+            cont++;
+            c = getchar();
+        }
+
+        if(cont != 0) // aca en el "if" lo que pasa es que recibe las letras que salieron del "while" de arriba y si la cantidad de letras es distinta de 0 
+                      // entiende que es una palabra, entonces la suma al cont1 (donde se almacenara la cantidad de palabras)
+        {
+            cont1++;
+        }
+    }
+
+    printf("\nLa cantidad de palabras que tiene la frase es: %d", cont1);
+
+    return 0;
+}
+
+
+/*Este es un ejemplo en el que vemos cuantas "a" hay en una oracion*/
+
+#include <stdio.h>
+
+int main()
+{
+    int c, cont = 0;
+    
+    c =getchar(); //si no se pone este, no te toma la primer letra
+    while (c != '\n')
+    {
+        putchar (c);
+        if (c == 'a') //se pone aca porque si lo pones abajo del "getchar" no tratas el caracter y directamente toma el que sigue
+                      //(esto en caso de que la primer letra sea con "a" como dice la condicion)
+        {
+            cont ++;
+        }
+        c= getchar();
+    }
+    printf ("\nLa cantidad de A es: %d", cont);
+    
+    return 0;
+}
+
+
+/*Este es un ejemplo para ver la cantidad de vocales*/
+
+#include <stdio.h>
+
+int main() 
+{
+    int c, cont = 0, contv = 0;
+    
+    c =getchar();
+    while (c != '\n')
+    {
+        putchar (c);
+        if (c == 'a')
+        {
+            cont ++;
+        }
+        
+        if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u')
+        {
+           contv ++; 
+        }
+        c= getchar();
+    }
+    
+    printf ("\nLa cantidad de A es: %d", cont);
+    printf ("\nLa cantidad de vocales es: %d", contv);
+    
+    return 0;
+}
+
+
+/*Este es un ejemplo de si queremos ver las primeras letras de cada frase de la oracion*/
+
+#include <stdio.h>
+
+int main() 
+{
+    int c;
+    
+    c =getchar();
+    while (c != '.' && c == ' ') //este analiza los blancos que estan adelante del principo de la oracion
+    {
+        c = getchar(); //este lee los blancos
+    }
+    
+    while (c != '.') //aca entra cuando ya encuentra una letra que sea distinta del blanco que venia leyendo
+    {
+        putchar(c); //este lo que hace es quedarse con la primera letra, no las recorre todas como si haria si estuviese dentro del "while"
+        while (c != '.' && c != ' ')
+        {
+            c = getchar();
+        }
+        
+        while (c != '.' && c == ' ') //este analiza los blancos despues de la oracion y antes del punto
+        {
+            c = getchar();
+        }
+    }
+    
+    return 0;
+}
+
+
+
+
+/*Este es un ejemplo en el que vemos como hacemos si queremos buscar la ultima letra de cada frase y tenemos blancos
+adelante de la oraion y al final antes del punto*/
+
+#include <stdio.h>
+
+int main() 
+{
+    int c, cont = 0, contv = 0;
+    int ultimo;
+    
+    c =getchar();
+    while (c != '.' && c == ' ') //este analiza los blancos que estan adelante del principo de la oracion
+    {
+        c = getchar(); //este lee los blancos
+    }
+    
+    while (c != '.') //aca entra cuando ya encuentra una letra que sea distinta del blanco que venia leyendo
+    {
+        while (c != '.' && c != ' ')
+        {
+            ultimo = c;
+            c = getchar();
+        }
+        putchar(ultimo); //esto va a devolver todas las ultimas letras de cada palabra de la oracion
+        
+        while (c != '.' && c == ' ') //este analiza los blancos despues de la oracion y antes del punto
+        {
+            c = getchar();
+            
+        }
+    }
+    
+    return 0;
+}
+
+
+/*Este es un ejemplo en el que contamos las palabras que empiezan con A y terminan con S*/
+
+#include <stdio.h>
+
+int main() 
+{
+    int c, cont = 0, contv = 0;
+    int ultimo, primera;
+    
+    c =getchar();
+    while (c != '.' && c == ' ') //este analiza los blancos que estan adelante del principo de la oracion
+    {
+        c = getchar(); //este lee los blancos
+    }
+    
+    while (c != '.') //aca entra cuando ya encuentra una letra que sea distinta del blanco que venia leyendo
+    {
+        primera = c; //este guarda la primera letra de cada palabra de la oracion
+        while (c != '.' && c != ' ')
+        {
+            ultimo = c; //este guarda la ultima letra de cada palabra de la oracion
+            c = getchar();
+        }
+        putchar (ultimo);
+        
+        if(primera == 'a' && ultimo == 's')
+        {
+            cont++;
+        }
+
+        while (c != '.' && c == ' ') //este analiza los blancos despues de la oracion y antes del punto
+        {
+            c = getchar();
+            
+        }
+    }
+    
+    printf("\nLas cantidad de palabras que empiezan con A y terminan con S son: %d", cont);
+    
+    return 0;
+}
+
+
+/*Aca calculamos la cantidad de palabras con mas de 3 letras*/
+
+#include <stdio.h>
+
+int main() 
+{
+    int c, cont = 0, contLetras = 0, contPal = 0;
+    
+    c =getchar();
+    
+    while (c != '.' && c == ' ')
+    {
+        c = getchar();
+    }
+    
+    while (c != '.')
+    {
+        while (c != '.' && c != ' ')
+        {
+            contLetras++;
+            putchar(c);
+            c = getchar();
+        }
+        
+        if(contLetras > 3)
+        {
+            contPal++;
+        }
+        contLetras = 0; //se reinicia el contador de letras porque sino se nos acumulan 
+        
+        while (c != '.' && c == ' ')
+        {
+            c = getchar();
+            
+        }
+    }
+    
+    printf("\nLa cantidad de palabras de la oracion que tienen mas de 3 letras son: %d", contPal);
+    
+    return 0;
+}
+
+
+/*En este ejemplo calculamos la cantidad de palabras que hay en una frase*/
+
+#include <stdio.h>
+
+int main() 
+{
+    int c, cont = 0;
+    
+    c =getchar();
+    while (c != '.' && c == ' ')
+    {
+        c = getchar();
+    }    
+    
+    while (c != '.')
+    {
+        while (c != '.' && c != ' ')
+        {
+            putchar(c);
+            c = getchar();
+        }
+        cont ++; //como sale de la lectura de palabras lo unico que hacemos es contarlas
+        
+        while (c != '.' && c == ' ')
+        {
+            c = getchar();
+        }
+        
+    }
+    
+    printf ("\nCantidad de palabras: %d", cont);
+    return 0;
+}
+
+
+/*En este ejemplo queremos que cuando devuelva la lectura (que pone todas las palabras juntas) tenga mas de un espacio entre 
+palabra y palabra*/
+
+#include <stdio.h>
+
+int main() 
+{
+    int c;
+    
+    c =getchar();
+    while (c != '.' && c == ' ')
+    {
+        c = getchar();
+    }    
+    
+    while (c != '.')
+    {
+        while (c != '.' && c != ' ')
+        {
+            putchar(c);
+            c = getchar();
+        }
+        
+        while (c != '.' && c == ' ')
+        {
+            c = getchar();
+        }
+        
+        putchar(' '); //se ponen aca porque al salir del "while" sabemos que nos dejo al principio de la palabra o en la marca
+        putchar(' '); //de fin, en el ultimo caracter de la secucencia 
+    }
+    
+    return 0;
+}
+

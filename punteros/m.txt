@@ -1,0 +1,3 @@
+//asterisco(variable) muestra el contenido de la variable y no la posicion de memoria
+//& muestra la direccion de memoria
+//"%p", variable                  muestra la direccion de una variable

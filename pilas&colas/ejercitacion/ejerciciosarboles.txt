@@ -1,0 +1,22 @@
+© Universidad de Palermo. Prohibida la reproducción total o parcial de imágenes y textos. 1
+Guía de ejercicios
+
+1. Diseñar una función que, dado un árbol binario y un valor, determine si el valor
+pertenece al árbol.
+
+2. Diseñar una función que, dado un árbol binario, calcule su cantidad de nodos.
+
+3. Diseñar tres funciones para el recorrido de un árbol binario (pre orden, orden y post
+orden).
+
+4. Diseñar una función que, dado un árbol binario de búsqueda, calcule el promedio de
+aquellos nodos múltiplos de la raíz.
+
+5. Diseñar una función que, dado un árbol binario de búsqueda, calcule la cantidad de
+nodos hojas divisores de la raíz.
+
+6. Diseñar una función que, dado un árbol binario de búsqueda, calcule la sumatoria de
+aquellos nodos pares con un solo hijo.
+
+7. Diseñar una función que, dado un árbol binario de búsqueda, calcule la cantidad de
+nodos impares con dos hijos.

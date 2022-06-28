@@ -1,0 +1,251 @@
+/*RECURSIVIDAD*/
+
+
+/* Diseñar un algoritmo recursivo que permita hacer la división por restas sucesivas.*/
+
+#include <stdio.h>
+
+int cociente(int a, int b)
+{
+    if (b == 0)
+    {
+        return 0;
+    }
+    
+    else
+    {
+        return cociente (a - b, b) + 1; // pongo dos veces B porque es un valor que no quiro que cambie 
+    }
+}
+
+
+
+int main()
+{
+    int a, b; 
+    printf("\nIngrese un numero: ");
+    scanf("%d", &a);
+    printf("\nIngrese otro numero: ");
+    scanf("%d", &b);
+    printf("\nEl cociente es: %d", cociente(a, b));
+    
+    return 0;
+}
+
+
+
+/*Este es para sacar el producto de los numeros ingresados de manera recursiva*/
+
+#include <stdio.h>
+
+int producto(int a, int b)
+{
+    if(b==0)
+    {
+        return 0;
+    }
+    
+    return producto(a, b-1)+a;
+}
+
+
+int main()
+{
+    int a, b;
+    printf("\nIngrese los valores: ");
+    scanf("%d", &a);
+    scanf("%d", &b);
+    printf("\nEl producto es: %d", producto(a, b));
+    
+    return 0;
+}
+
+
+/*En  este calculamos la potencia de los numeros que ingresemos de manera recursiva*/
+
+#include <stdio.h>
+
+int potencia(int a, int b)
+{
+    if(b==0)
+    {
+        return 1; //pongo 1 porque nunca va a ser 0, dado que cualquier numero elevado a la 0 da 1
+    }
+    
+    return potencia(a, b-1)*a; //como la potencia es multiplicar "x" numero "n" cantidad de veces se pone asi 
+                               //por ejemplo 2^4 es igual a 2x2x2x2 
+}
+
+
+int main()
+{
+    int a, b;
+    printf("\nIngrese los valores: ");
+    scanf("%d", &a);
+    scanf("%d", &b);
+    printf("\nLa potencia es: %d", potencia(a, b));
+    
+    return 0;
+}
+
+
+/*Calculamos el factorial de manera recursiva*/
+
+#include <stdio.h>
+
+int factorial(int num)
+{
+    if(num==0)
+    {
+        return 1; //se pone 1 porque ningun factorial va a dar 0
+    }
+    
+    return factorial(num-1)*num; //ponemos "(num-1)*num" debido a que hacemos que el nuermo que se ingreso sea menor a que cuando lo multiplicamos
+                                 //por ejemplo si ingresamos un 4, num-1 lo va a volver 3 y lo va a multiplicar por 4 que es el valor inicial
+}
+
+
+int main()
+{
+    int num;
+    printf("\nIngrese los valores: ");
+    scanf("%d", &num);
+    printf("\nEl factorial es: %d", factorial(num));
+    
+    return 0;
+}
+
+
+/*Dados dos numeros calcular la division entera (no con coma) de manera recursiva*/
+
+#include <stdio.h>
+
+int cociente(int a, int b)
+{
+    if(a-b<0) //pongo asi para que no me de numero con coma 
+              //ejemplo si hago 20/8 se hace 20-8=12, 12-8=4, toma este como referencia pero lo hace una vez mas para que corte: 4-8=-4 (este no lo toma)
+    {
+        return 0;
+    }
+    
+    return cociente(a, b-1)+1; //cuando se divide nos fijamos la cantidad de veces que el numero se tiene que decrementar por el divisor 
+                               //por ejemplo 10/2 es 5 porque es 2-2-2-2-2, ese mismo razonamiento se aplica para esto
+}
+
+
+int main()
+{
+    int a, b;
+    printf("\nIngrese los valores: ");
+    scanf("%d", &a);
+    scanf("%d", &b);
+    printf("\nEl cociente es: %d", cociente(a, b));
+    
+    return 0;
+}
+
+
+/*ARREGLOS Y RECURSIVIDAD*/
+/*En este caso tenemos el arreglo definido con sus valores*/
+
+#include <stdio.h>
+
+int suma(int vec[], int dim)
+{
+    if(dim<0)
+    {
+        return 0;
+    }
+    
+    return suma(vec, dim-1)+vec[dim];
+}
+
+
+int main()
+{
+    int vec[10] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+    printf("\nIngrese los valores: ");
+    printf("\nLa suma del arreglo es: %d", suma(vec, 9)); //se pone desde el 9 porque las cajitas del arreglo son de 0 al 9 (osea 10 posociones) 
+    
+    return 0;
+}
+
+
+/*En este caso es el arreglo sin los valores*/
+
+#include <stdio.h>
+
+int suma(int vec[], int dim)
+{
+    if(dim<0)
+    {
+        return 0;
+    }
+    
+    return suma(vec, dim-1)+vec[dim];
+}
+
+void cargar(int vec[], int dim)
+{
+    if(dim<0)
+    {
+        return; //queda solo el "return" porque es de tipo "void", no devuelve nada
+    }
+
+    printf("\ningrese valor: ");
+    scanf("%d", &vec[dim]);
+    cargar(vec, dim-1); 
+}
+
+void mostrar(int vec[], int dim)
+{
+    if(dim<0)
+    {
+        return; //queda solo el "return" porque es de tipo "void", no devuelve nada
+    }
+
+    printf("\nEl valor es: %d", vec[dim]);
+    mostrar(vec, dim-1); 
+}
+
+int main()
+{
+    int vec[10], dim;
+    printf("\nIngrese los valores: ");
+    scanf("%d", &dim);
+    cargar(vec, dim-1); //el "dim" va a ir de la ultima posicion hasta la primera 
+    mostrar(vec, dim-1);
+    printf("\nLa suma del arreglo es: %d", suma(vec, dim-1)); 
+    
+    return 0;
+}
+
+
+/*Aca usamos la recursividad y lo que vimos de caracteres*/
+
+#include <stdio.h>
+
+void invertir(int c)
+{
+    if(c == '\n')
+    {
+        return; //queda solo el "return" porque es de tipo "void", no devuelve nada
+    }
+
+    c = getchar;
+    invertir(c);
+    putchar(c);
+}
+
+
+int main()
+{
+    int c;
+    printf("\nIngrese frase terminada en ENTER: ");
+    c = getchar;
+    invertir(c); //esto es para dar vuelta la frase. Ej: hola --> aloh
+    putchar(c); //hay que poner este aca porque sino se come la primera letra. Ej hola --> alo (se come la H)
+    
+    return 0;
+}
+

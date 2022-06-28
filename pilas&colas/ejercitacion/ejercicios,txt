@@ -1,0 +1,31 @@
+© Universidad de Palermo. Prohibida la reproducción total o parcial de imágenes y textos. 1
+Guía de Ejercicios
+Pilas y Colas
+
+
+Para los siguientes ejercicios crear una pila con la siguiente información:
+ A: entero.
+ SIG: puntero al próximo elemento de la pila.
+y calcular:
+
+
+1) La cantidad de números múltiplos de 3.
+2) El promedio de aquellos números divisores de 4.
+3) La sumatoria de aquellos números múltiplos del primer elemento ingresado a la pila.
+4) El número máximo y su posición en la pila.
+5) El número mínimo y su posición en la pila.
+6) Ingresar un numero por teclado y calcular la cantidad de veces que está en la pila.
+Si no está, mostrar una leyenda.
+7) Calcular la sumatoria de numeros multiplos del ultimo elemento ingresado en la pila
+
+
+Para los siguientes ejercicios crear una cola con la siguiente información:
+ A: entero.
+ SIG: puntero al próximo elemento de la cola.
+y calcular:
+
+1) La productoria de los números múltiplos de 7.
+2) El promedio de aquellos números divisores del último número ingresado a la cola
+3) Sumatoria de aquellos números divisores de primer elemento ingresado a la cola.
+4) El número máximo y su posición en la cola.
+5) El número mínimo y su posición en la cola.
